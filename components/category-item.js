@@ -1,6 +1,11 @@
+import { useNavigation } from "@react-navigation/native";
 import { Platform, Pressable, StyleSheet, Text, View } from "react-native";
 
-const CategoryItem = ({ category }) => {
+const CategoryItem = ({ category, onPress }) => {
+  const navigation = useNavigation();
+  const pressHandler = () => {
+    navigation.navigate("mealOverview", { categoryId: category.id });
+  };
   return (
     <View style={[styles.container, { backgroundColor: category.color }]}>
       <Pressable
@@ -9,6 +14,7 @@ const CategoryItem = ({ category }) => {
           styles.button,
           pressed ? styles.pressed : null,
         ]}
+        onPress={pressHandler}
       >
         <View style={styles.innerConntainer}>
           <Text style={styles.title}>{category.title}</Text>
