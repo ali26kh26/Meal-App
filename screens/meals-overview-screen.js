@@ -7,9 +7,8 @@ const MealsOverviewScreen = ({ route }) => {
   const displayedMeals = MEALS.filter(
     (meal) => meal.categoryIds.indexOf(categoryId) >= 0
   );
-  console.group(displayedMeals);
   return (
-    <View>
+    <View style={styles.container}>
       <FlatList
         data={displayedMeals}
         keyExtractor={(meal) => meal.id}
@@ -18,5 +17,9 @@ const MealsOverviewScreen = ({ route }) => {
     </View>
   );
 };
-
+const styles = StyleSheet.create({
+  container: {
+    padding: 16,
+  },
+});
 export default MealsOverviewScreen;
